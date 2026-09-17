@@ -9910,7 +9910,10 @@ form.addEventListener("submit", async (event) => {
       }
     }
     if (!indexHtml) throw new Error("no-index");
-    frame.srcdoc = rewrite(indexHtml, blobs);
+    const html = rewrite(indexHtml, blobs);
+    const pageUrl = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+    frame.removeAttribute("srcdoc");
+    frame.src = pageUrl;
     gate.style.display = "none";
     frame.style.display = "block";
   } catch {
