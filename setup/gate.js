@@ -9914,7 +9914,7 @@ form.addEventListener("submit", async (event) => {
     gate.style.display = "none";
     frame.style.display = "block";
   } catch {
-    errorEl.textContent = "Wrong password, or it has rotated for the UTC day.";
+    errorEl.textContent = "Invalid password. Try again.";
   } finally {
     button.disabled = false;
     button.textContent = "Enter";
