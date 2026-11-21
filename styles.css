@@ -1,0 +1,267 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'EB Garamond', serif;
+    background-color: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+    line-height: 1.4;
+    font-weight: 300;
+    font-size: max(4rem);
+}
+
+/* ===== DESKTOP NAVIGATION ===== */
+.navigation {
+    display: flex;
+    max-width: 1200px;
+    justify-content: space-between;
+    padding: 1rem 0;
+    font-family: 'Martian Mono', monospace;
+    font-size: 1.5rem; /* 24px */
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin: auto;
+    
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 0;
+}
+
+.nav-link:hover {
+    color: #808080;
+    text-decoration: none;
+}
+
+.nav-link:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ===== MOBILE HAMBURGER MENU ===== */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger-icon {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-menu.active .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== MOBILE MENU OVERLAY ===== */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.mobile-nav-link {
+    font-family: 'Martian Mono', monospace;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+    color: #6B88FF;
+}
+
+/* ===== MARQUEE BANNER ===== */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: #6B88FF;
+    padding: 0.5rem max(3rem);
+    padding-right: max(3rem, 48px);
+    cursor: pointer;
+}
+
+.marquee-content {
+    display: flex;
+    animation: marquee 8s linear infinite;
+    white-space: wrap;
+}
+
+/* Pause marquee on hover */
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+.marquee-text {
+    font-family: 'Martian Mono', monospace;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #ffffff;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===== DESKTOP MAIN CONTENT ===== */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    padding: max(3rem) max(3rem);
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    text-align: left;
+}
+
+.bio-text {
+    font-family: 'EB Garamond', serif;
+    font-size: max(4rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.highlight {
+    color: #6B88FF;
+    font-weight: 400;
+}
+
+/* ===== DESKTOP FOOTER ===== */
+.footer {
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.footer-text {
+    font-family: 'Martian Mono', monospace;
+    font-size: 1rem; /* 16px */
+    font-weight: 300;
+    color: #ffffff;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== RESPIVE DESIGN ===== */
+
+/* Large screens (1200px and below) */
+@media (max-width: 1200px) {
+
+    .navigation {
+        padding: 1rem max(3rem);
+    }
+
+    .bio-text {
+        font-size: max(3.5rem); /* 56px */
+    }
+}
+
+/* Mobile Nav (768px and below) */
+@media (max-width: 768px) {
+    /* Hide desktop nav, show hamburger */
+    .desktop-nav {
+        display: none;
+    }
+    
+    .hamburger-menu {
+        display: block;
+    }
+    
+    .marquee-text {
+        font-size: 1rem;
+    }
+
+    /* Mobile navigation adjustments */
+    .navigation {
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+    }
+
+    .main-content {
+        padding: min(2rem) min(2rem);
+    }
+
+    .bio-text {
+        font-size: min(2rem);
+    }
+    
+    .footer {
+        margin: 0.5rem 0;
+    }
+}
